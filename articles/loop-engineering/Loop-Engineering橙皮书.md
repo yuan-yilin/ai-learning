@@ -1,6 +1,6 @@
 ---
 title: Loop Engineering 橙皮书
-source: /Users/01428674/Desktop/pdf/Loop-Engineering橙皮书-v260615 .pdf
+source: Loop-Engineering橙皮书-v260615 .pdf
 author: 花叔
 version: v260615
 range: 整本 32 页
@@ -515,10 +515,10 @@ Rajasekaran 在前端任务里的做法值得抄。evaluator 接上 Playwright M
 
 谁在判定「完成」对比:
 
-| 谁在判定「完成」 | 问题 | 优势 |
-|---|---|---|
-| agent 自评 | 干活的那个 agent 带自我说服,倾向于夸自己 | (无) |
-| `/goal` | — | 每轮换一个 fresh 小模型,无包袱,只能看客观条件 |
+| 谁在判定「完成」 | 问题                       | 优势                          |
+| -------- | ------------------------ | --------------------------- |
+| agent 自评 | 干活的那个 agent 带自我说服,倾向于夸自己 | (无)                         |
+| `/goal`  | —                        | 每轮换一个 fresh 小模型,无包袱,只能看客观条件 |
 
 > [!warning] 别把命令名安错门
 > `/goal` 是 Claude Code 的命令名。Codex 上没有这个命令,它走的是 Automations 加 agents 的配置去实现同类能力,结构一样,叫法不一样。并列着写的时候别把命令名安错门。
@@ -582,13 +582,13 @@ Addy Osmani 描述过他自己的一个 loop。不是设想,是每天早上自�
 
 Stripe Minions 的环节分工:
 
-| 环节 | 谁来做 |
-|---|---|
-| 触发 | 人(Slack @ 或 emoji) |
-| 备上下文 | 确定性 orchestrator(非 LLM) |
-| 写代码 | LLM agent |
-| 跑 linter / commit | 硬编码 pipeline(agent 跳不过) |
-| review 这 1300 个 PR | 人 |
+| 环节                 | 谁来做                     |
+| ------------------ | ----------------------- |
+| 触发                 | 人(Slack @ 或 emoji)      |
+| 备上下文               | 确定性 orchestrator(非 LLM) |
+| 写代码                | LLM agent               |
+| 跑 linter / commit  | 硬编码 pipeline(agent 跳不过) |
+| review 这 1300 个 PR | 人                       |
 
 > [!note] 人没退场,人换了工位
 > 注意最后一行。人没退场,人换了工位。这 1300 个 PR 仍然由工程师 review,时间从「写」挪到了「审」。这恰好接上一章的话:loop 越能产出你没写的代码,能说「不」的那一环就越关键。Stripe 把一半「不」交给硬编码 gate,另一半留给人。
@@ -722,12 +722,12 @@ Addy 还点了一句关键的:用量会剧烈波动,取决于你是 token 富人
 
 这四笔账有个共同点:它们都不会在循环跑的当下报警。
 
-| 代价 | 症状 | 一句话 | 防它 |
-|---|---|---|---|
-| 验证债 | 产出堆着没人验,错误安静积累 | 产出堆着没人验 | 装一个跟干活的不是同一个的评判者 |
-| 理解腐烂 | 代码在长,你脑里的地图停了 | 实际存在 vs 你真正理解,差距变大 | 定期读产出,讲不出就是该更新 |
-| 认知投降 | 循环给啥收啥,懒得有意见 | 它给什么你就收什么 | 执行可外包,拿主意不行 |
-| token 失控 | 用量剧烈波动,账单不可预测 | 一个 bug 空转整夜 | 上线前钉死预算和重试上限 |
+| 代价       | 症状             | 一句话                | 防它               |
+| -------- | -------------- | ------------------ | ---------------- |
+| 验证债      | 产出堆着没人验,错误安静积累 | 产出堆着没人验            | 装一个跟干活的不是同一个的评判者 |
+| 理解腐烂     | 代码在长,你脑里的地图停了  | 实际存在 vs 你真正理解,差距变大 | 定期读产出,讲不出就是该更新   |
+| 认知投降     | 循环给啥收啥,懒得有意见   | 它给什么你就收什么          | 执行可外包,拿主意不行      |
+| token 失控 | 用量剧烈波动,账单不可预测  | 一个 bug 空转整夜        | 上线前钉死预算和重试上限     |
 
 > [!important] 回音壁
 > 循环工程最迷人的地方,是它让一个人能干一个团队的活。最危险的地方,也是同一处——团队会互相 review、互相提醒、互相吵架,一个人加一堆循环,很容易变成没人吵架的回音壁。
@@ -900,15 +900,15 @@ Claude Code 里有个现成的工具叫 `/goal`(v2.1.139 之后可用),专门干
 
 上面用的命令都是 Claude Code 的。Codex 也能做同样的事,只是入口和叫法不一样。别把命令名安错家。`/loop`、`/goal` 是 Claude Code 的,不是 Codex 的。
 
-| 能力 | Claude Code | Codex |
-|---|---|---|
-| 定时调度 | `/loop`(后台定时 worker) | Automations 标签页(daily/weekly + 自定义 cron) |
-| 跑到条件满足 | `/goal` | —(靠 automation 重跑 + 判断) |
-| 并行隔离 | `--worktree` / `-w` | 专用 background worktree,结果进 Triage 收件箱 |
-| 子 agent | Subagents / Agent Teams(`.claude/agents/`) | `.codex/agents/` TOML 定义 |
-| 外部连接 | [[MCP]] + Plugins(一键安装) | MCP connector |
-| 显式调技能 | Skills(`SKILL.md`) | `$skill-name` |
-| 关机也跑 | Cloud Routines(跑在云端) | 云端(规划中的 Codex Jobs) |
+| 能力      | Claude Code                                | Codex                                    |
+| ------- | ------------------------------------------ | ---------------------------------------- |
+| 定时调度    | `/loop`(后台定时 worker)                       | Automations 标签页(daily/weekly + 自定义 cron) |
+| 跑到条件满足  | `/goal`                                    | —(靠 automation 重跑 + 判断)                  |
+| 并行隔离    | `--worktree` / `-w`                        | 专用 background worktree,结果进 Triage 收件箱    |
+| 子 agent | Subagents / Agent Teams(`.claude/agents/`) | `.codex/agents/` TOML 定义                 |
+| 外部连接    | [[MCP]] + Plugins(一键安装)                    | MCP connector                            |
+| 显式调技能   | Skills(`SKILL.md`)                         | `$skill-name`                            |
+| 关机也跑    | Cloud Routines(跑在云端)                       | 云端(规划中的 Codex Jobs)                      |
 
 > [!note] MCP 跨两边兼容
 > MCP 这一行值得多说一句:它跨两边兼容,你在一边写好的 connector,挪到另一边常常能直接用。至于 Cursor 那套(Background Agents、subagents、Cloud Agents),能力路线类似,但版本细节我手上是二手信息,这里就不展开了,你要用的话自己核一下它最新的 changelog。
@@ -934,23 +934,3 @@ Claude Code 里有个现成的工具叫 `/goal`(v2.1.139 之后可用),专门干
 这本书到这儿就讲完了。原理、零件、案例、代价,能说的我都说了。剩下的不在书里,在你的终端里。**现在就去搭你的第一个 loop**。
 
 ---
-
-## 尾页
-
-> **Loop Engineering · 别再问我什么是循环工程**
-
-花叔 · AI Native Coder
-
-> 我一行代码都不会写,却用 AI 做出了 AppStore 付费榜 Top 1 的小猫补光灯,写了多本技术书。所有产品全部 AI 写的,我只负责想清楚要做什么。我始终相信:**AI 生成内容不稀缺,稀缺的是判断力**。
-
-| 渠道 | |
-|---|---|
-| B 站 | 花叔 v |
-| 公众号 | 花叔 |
-| X | 花叔 |
-| 其他 | YouTube · GitHub · 官网 |
-
-*Created by 花叔 · 2026 年 6 月*
-*所有橙皮书免费下载:huasheng.ai/orange-books*
-
-![尾页](images/fig-backcover.png)

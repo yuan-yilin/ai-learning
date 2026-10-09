@@ -1,3 +1,18 @@
+---
+title: Thin harness, fat skills
+source: https://x.com/garrytan/article/2042925773300908103
+author: Garry Tan
+created: 2026-07-13
+tags:
+  - ai
+  - agent
+  - harness
+  - skills
+  - loop-engineering
+aliases:
+  - 瘦 harness 胖 skills
+---
+
 Steve Yegge says people using AI coding agents are "10x to 100x as productive as engineers using Cursor and chat today, and roughly 1000x as productive as Googlers were back in 2005."
 
 That's a real number. I've seen it. I've lived it. But when people hear it, they reach for the wrong explanation. Better models. Smarter Claude. More parameters. The 2x people and the 100x people are using the same models. The difference isn't intelligence. It's architecture — and it fits on an index card.

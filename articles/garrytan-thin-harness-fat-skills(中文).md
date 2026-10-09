@@ -1,3 +1,22 @@
+---
+title: 瘦 harness 胖 skills(中文)
+source: |-
+  https://x.com/garrytan/article/2042925773300908103
+
+  https://mp.weixin.qq.com/s/IrlfZkxYtvkDo1qYwO-RCw
+author: Garry Tan
+created: 2026-07-13
+tags:
+  - ai
+  - agent
+  - harness
+  - skills
+  - loop-engineering
+aliases:
+  - Thin harness, fat skills
+  - 瘦harness胖skills
+---
+
 Steve Yegge 说,使用 AI 编码 agent 的人"生产力是用 Cursor 和聊天的工程师的 10 到 100 倍,大约相当于 2005 年 Google 工程师的 1000 倍。"
 
 这是一个真实数字。我见过,我也亲身经历过。但当人们听到这句话时,他们总是找错解释——更好的模型、更聪明的 Claude、更多参数。但 2 倍生产力和 100 倍生产力的人用的是同一批模型。差异不在智能,而在架构——一张索引卡就能写完。
